@@ -85,9 +85,11 @@ set ruler
 "Always show line number
 set nu
 
-
 " Height of the command bar
 set cmdheight=1
+
+" highlight the cursor line
+set cursorline
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -134,6 +136,19 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.vim/plugged')
+
+" color schemes
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -142,12 +157,10 @@ set foldcolumn=1
 syntax enable 
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+set termguicolors
 
 try
-    colorscheme desert
+    colorscheme gruvbox
 catch
 endtry
 
@@ -176,8 +189,7 @@ set nobackup
 set nowb
 set noswapfile
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
