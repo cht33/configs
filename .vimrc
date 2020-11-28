@@ -26,6 +26,9 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if filereadable(expand("~/.vim/vimrc_plug"))
+    source ~/.vim/vimrc_plug
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -79,17 +82,11 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-"Always show current position
 set ruler
-
-"Always show line number
 set nu
-
-" Height of the command bar
 set cmdheight=1
-
-" highlight the cursor line
 set cursorline
+set nowrap
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -98,16 +95,10 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
+" serach related
 set ignorecase
-
-" When searching try to be smart about cases 
 set smartcase
-
-" Highlight search results
 set hlsearch
-
-" Makes search act like search in modern browsers
 set incsearch 
 
 " Don't redraw while executing macros (good performance config)
@@ -132,30 +123,12 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
-" Add a bit extra margin to the left
-set foldcolumn=1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => plugins
+" => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Install vim-plug automatically
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-" color schemes
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+set foldenable
+set foldlevel=10
+set foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -164,7 +137,11 @@ call plug#end()
 syntax enable 
 
 " Enable 256 colors palette in Gnome Terminal
-set termguicolors
+try
+    set termguicolors
+catch
+    set t_Co=256
+endtry
 
 try
     colorscheme gruvbox
@@ -195,6 +172,7 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
+set noundofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
