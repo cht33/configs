@@ -26,6 +26,13 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Install vim-plug automatically
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 if filereadable(expand("~/.vim/vimrc_plug"))
     source ~/.vim/vimrc_plug
 endif
@@ -100,6 +107,8 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch 
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
@@ -123,9 +132,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fold related
 set foldenable
 set foldlevel=10
 set foldmethod=indent
@@ -197,8 +204,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
-
+set nowrap "no wrap lines
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -212,19 +218,16 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <C-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+noremap <up> :res +5<CR>
+noremap <down> :res -5<CR>
+noremap <left> :vertical res -5<CR>
+noremap <right> :vertical res +5<CR>
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -239,13 +242,12 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tt :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -281,20 +283,24 @@ inoremap jj <ESC>
 inoremap fj <C-o>
 map Q :q<CR>
 
+nnoremap Y y$
+nnoremap C c$
+nnoremap D d$
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <leader>mj mz:m+<cr>`z
+nmap <leader>mk mz:m-2<cr>`z
+vmap <leader>mj :m'>+<cr>`<my`>mzgv`yo`z
+vmap <leader>mk :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+  nmap <D-j> <leader>mj
+  nmap <D-k> <leader>mk
+  vmap <D-j> <leader>mj
+  vmap <D-k> <leader>mk
 endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
@@ -328,7 +334,7 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
