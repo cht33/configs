@@ -7,9 +7,16 @@ call plug#begin('~/.vim/plugged')
 " color schemes
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
 
+Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" ===========================
+" coc.nvim
+" ===========================
 
+let g:coc_node_path="~/node-v14.15.1-linux-x64/bin"

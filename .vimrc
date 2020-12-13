@@ -65,7 +65,6 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 " Apply the changes of vimrc immediately
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -218,31 +217,40 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" split windows
+map <leader>wl :set splitright<cr>:vsplit<cr>
+map <leader>wh :set nosplitright<cr>:vsplit<cr>
+map <leader>wj :set splitbelow<cr>:split<cr>
+map <leader>wk :set nosplitbelow<cr>:split<cr>
+
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <leader>j <C-W>j
+map <leader>k <C-W>k
+map <leader>h <C-W>h
+map <leader>l <C-W>l
 
 noremap <up> :res +5<CR>
 noremap <down> :res -5<CR>
 noremap <left> :vertical res -5<CR>
 noremap <right> :vertical res +5<CR>
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map <leader>bl :bnext<cr>
+map <leader>bh :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>tt :tabnext<cr>
+map <leader>tj :tabnext<cr>
+map <leader>tk :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
