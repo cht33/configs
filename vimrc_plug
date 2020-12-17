@@ -22,7 +22,8 @@ call plug#end()
 let g:coc_global_extensions=[ 
  \ 'coc-pyright', 
  \ 'coc-json',
- \ 'coc-vimlsp']
+ \ 'coc-vimlsp',
+ \ 'coc-explorer']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -95,6 +96,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -184,3 +186,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Open coclist
 nnoremap <silent> <space>g :<C-u>CocList --normal gstatus<CR>
+
+
+nmap ;e :CocCommand explorer<cr>

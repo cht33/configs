@@ -245,16 +245,16 @@ map <leader>bl :bnext<cr>
 map <leader>bh :bprevious<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>tj :tabnext<cr>
-map <leader>tk :tabprevious<cr>
+map <leader><tab>n :tabnew<cr>
+map <leader><tab>o :tabonly<cr>
+map <leader><tab>c :tabclose<cr>
+map <leader><tab>m :tabmove 
+map <leader><tab>j :tabnext<cr>
+map <leader><tab>k :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader><tab>l :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
