@@ -11,9 +11,23 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'gcmt/wildfire.vim'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" ===========================
+" easymotion
+" ===========================
+nmap ss <Plug>(easymotion-s2)
+
+" ===========================
+" wildfire.vim
+" ===========================
+let g:wildfire_objects = ["i'", 'i"', "i)", "i>", "i]", "i}", "ip", "it"]
 
 " ===========================
 " coc.nvim
