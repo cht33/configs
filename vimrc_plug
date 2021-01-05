@@ -15,6 +15,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'gcmt/wildfire.vim'
 
+Plug 'ciaranm/detectindent'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -22,7 +24,21 @@ call plug#end()
 " ===========================
 " easymotion
 " ===========================
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep='|'
+
+" ===========================
+" easymotion
+" ===========================
 nmap ss <Plug>(easymotion-s2)
+
+" ===========================
+" detectindent
+" ===========================
+let g:detectindent_preferred_expandtab=1
+let g:detectindent_preferred_indent=4
+autocmd BufReadPost * :DetectIndent
 
 " ===========================
 " wildfire.vim
@@ -32,7 +48,6 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i>", "i]", "i}", "ip", "it"]
 " ===========================
 " coc.nvim
 " ===========================
-
 let g:coc_global_extensions=[ 
  \ 'coc-pyright', 
  \ 'coc-json',
