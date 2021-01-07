@@ -142,7 +142,6 @@ set foldmethod=indent
 " Enable syntax highlighting
 syntax enable 
 
-" Enable 256 colors palette in Gnome Terminal
 try
     set termguicolors
 catch
@@ -155,6 +154,9 @@ catch
 endtry
 
 set background=dark
+
+" transparent background
+" hi Normal guibg=NONE ctermbg=NONE
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -224,6 +226,14 @@ map <leader>wh :set nosplitright<cr>:vsplit<cr>
 map <leader>wj :set splitbelow<cr>:split<cr>
 map <leader>wk :set nosplitbelow<cr>:split<cr>
 
+" Place the two screens up and down
+noremap sh <C-w>t<C-w>K
+" Place the two screens side by side
+noremap sv <C-w>t<C-w>H
+" Rotate screens
+noremap srh <C-w>b<C-w>K
+noremap srv <C-w>b<C-w>H
+
 " Smart way to move between windows
 map <leader>j <C-W>j
 map <leader>k <C-W>k
@@ -282,7 +292,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings

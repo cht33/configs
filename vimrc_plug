@@ -8,30 +8,82 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
+" augument
+Plug 'ciaranm/detectindent'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 
+" edit
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'gcmt/wildfire.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-Plug 'ciaranm/detectindent'
+" make and run
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
+" magic
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" List ends here. Plugins become visible to Vim after this call.
+
 call plug#end()
 
 " ===========================
-" easymotion
+" airline
 " ===========================
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='|'
+let g:airline#extensions#tabline#tab_nr_type=1
+let g:airline#extensions#tabline#show_tab_nr=1
+let g:airline#extensions#tabline#fnametruncate=16
+let g:airline#extensions#tabline#fnamecollapse=2
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
+
+let g:airline#extensions#whitespace#max_lines = 5000
+
+let g:airline_powerline_fonts=1
+let g:airline_section_b='%{strftime("%c")}'
+
+" ===========================
+" nerdcommenter
+" ===========================
+let g:NERDCreateDefaultMappings=1
+let g:NERDSpaceDelims=1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
 
 " ===========================
 " easymotion
 " ===========================
 nmap ss <Plug>(easymotion-s2)
+
+" ===========================
+" visual-multi
+" ===========================
+nmap <C-k> <C-N>
+vmap <C-k> <C-N>
+
+" ===========================
+" asyncrun and asynctasks
+" ===========================
+let g:asynctasks_config_name = '.asynctask'
+let g:asynctasks_rtp_config = 'asynctasks.ini'
+let g:asyncrun_open=6
+let g:asynctasks_term_pos='bottom'
+let g:asynctasks_term_rows=10
+let g:asynctasks_term_cols=80
+noremap <silent><f5> :AsyncTask oi-cpp-run<cr>
+noremap <silent><f9> :AsyncTask file-build<cr>
+
+" ===========================
+" gruvbox
+" ===========================
+let g:gruvbox_transparent_bg=0
 
 " ===========================
 " detectindent
@@ -66,7 +118,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has('patch-8.1.1564')
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -77,8 +129,8 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ pumvisible() ? '\<C-n>' :
+      \ <SID>check_back_space() ? '\<TAB>' :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
