@@ -26,7 +26,7 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Install vim-plug automatically
+" " Install vim-plug automatically
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -57,6 +57,10 @@ let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+nnoremap J 5j
+nnoremap K 5k
+nnoremap U J
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
