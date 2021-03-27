@@ -12,6 +12,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ciaranm/detectindent'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
 
 " edit
 Plug 'easymotion/vim-easymotion'
@@ -45,6 +46,14 @@ let g:airline#extensions#whitespace#max_lines = 5000
 
 let g:airline_powerline_fonts=1
 let g:airline_section_b='%{strftime("%c")}'
+
+" ===========================
+" IndentLine
+" ===========================
+let g:indent_guides_guide_size = 1  
+let g:indent_guides_start_level = 2 
+let g:indentLine_color_term = 102
+let g:indentLine_color_gui = '#808A87' " grey
 
 " ===========================
 " nerdcommenter

@@ -146,6 +146,10 @@ set foldmethod=indent
 " Enable syntax highlighting
 syntax enable 
 
+" fix the bug when use termguicolors in tmux
+" https://github.com/vim/vim/issues/3608
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 try
     set termguicolors
 catch
