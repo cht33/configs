@@ -22,8 +22,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " make and run
-Plug 'skywind3000/asynctasks.vim'
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asynctasks.vim'
+" Plug 'skywind3000/asyncrun.vim'
 
 " magic
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -74,20 +74,22 @@ nmap ss <Plug>(easymotion-s2)
 " ===========================
 " visual-multi
 " ===========================
-nmap <C-k> <C-N>
-vmap <C-k> <C-N>
+if filereadable(expand("~/.vim/plugged/vim-visual-multi"))
+  nmap <C-k> <C-N>
+  vmap <C-k> <C-N>
+end
 
 " ===========================
 " asyncrun and asynctasks
 " ===========================
-let g:asynctasks_config_name = '.asynctask'
-let g:asynctasks_rtp_config = 'asynctasks.ini'
-let g:asyncrun_open=6
-let g:asynctasks_term_pos='bottom'
-let g:asynctasks_term_rows=10
-let g:asynctasks_term_cols=80
-noremap <silent><f5> :AsyncTask oi-cpp-run<cr>
-noremap <silent><f9> :AsyncTask file-build<cr>
+" let g:asynctasks_config_name = '.asynctask'
+" let g:asynctasks_rtp_config = 'asynctasks.ini'
+" let g:asyncrun_open=6
+" let g:asynctasks_term_pos='bottom'
+" let g:asynctasks_term_rows=10
+" let g:asynctasks_term_cols=80
+" noremap <silent><f5> :AsyncTask oi-cpp-run<cr>
+" noremap <silent><f9> :AsyncTask file-build<cr>
 
 " ===========================
 " gruvbox
@@ -97,9 +99,11 @@ let g:gruvbox_transparent_bg=0
 " ===========================
 " detectindent
 " ===========================
-let g:detectindent_preferred_expandtab=1
-let g:detectindent_preferred_indent=4
-autocmd BufReadPost * :DetectIndent
+if filereadable(expand("~/.vim/plugged/detectindent"))
+  let g:detectindent_preferred_expandtab=1
+  let g:detectindent_preferred_indent=4
+  autocmd BufReadPost * :DetectIndent
+end
 
 " ===========================
 " wildfire.vim
@@ -172,7 +176,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> doc :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -184,9 +188,16 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
+if filereadable(expand("~/.vim/plugged/coc.nvim"))
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
+
+  " Add (Neo)Vim's native statusline support.
+  " NOTE: Please see `:h coc-status` for integrations with external plugins that
+  " provide custom statusline: lightline.vim, vim-airline.
+  set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+end
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -252,10 +263,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
