@@ -94,6 +94,7 @@ endif
 
 set ruler
 set nu
+" set relativenumber
 set cmdheight=1
 set cursorline
 set nowrap
@@ -139,6 +140,23 @@ endif
 set foldenable
 set foldlevel=10
 set foldmethod=indent
+
+" 解决windows terminal下vim光标无法根据模式改变形态的问题
+if &term =~ "xterm"
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[2 q"
+endif
+
+" 解决tmux下vim光标无法根据模式改变形态的问题
+if exists('$TMUX')
+    let &t_SI .= "\e[6 q"
+    let &t_SR .= "\e[3 q"
+    let &t_EI .= "\e[2 q"
+endif
+
+" change dir to pwd
+set autochdir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -206,6 +224,7 @@ set tabstop=4
 " Show white space
 set list
 set listchars=tab:>-,trail:·,space:·
+
 
 " Linebreak on 500 characters
 set lbr
