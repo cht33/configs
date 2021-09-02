@@ -26,6 +26,9 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " " Install vim-plug automatically
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -60,7 +63,11 @@ nmap <leader>w :w!<cr>
 
 nnoremap J 5j
 nnoremap K 5k
+nnoremap H 5b
+nnoremap L 5w
 nnoremap U J
+vnoremap J 5j
+vnoremap K 5k
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -174,15 +181,10 @@ catch
     set t_Co=256
 endtry
 
-try
-    colorscheme gruvbox
-catch
-endtry
-
 set background=dark
 
 " transparent background
-" hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -443,3 +445,5 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+

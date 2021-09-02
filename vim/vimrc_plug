@@ -74,10 +74,10 @@ nmap ss <Plug>(easymotion-s2)
 " ===========================
 " visual-multi
 " ===========================
-if filereadable(expand("~/.vim/plugged/vim-visual-multi"))
+if !empty(glob('~/.vim/plugged/vim-visual-multi'))
   nmap <C-k> <C-N>
   vmap <C-k> <C-N>
-end
+endif
 
 " ===========================
 " asyncrun and asynctasks
@@ -95,15 +95,20 @@ end
 " gruvbox
 " ===========================
 let g:gruvbox_transparent_bg=0
+try
+    colorscheme gruvbox
+catch
+endtry
+
 
 " ===========================
 " detectindent
 " ===========================
-if filereadable(expand("~/.vim/plugged/detectindent"))
+if !empty(glob('~/.vim/plugged/detectindent'))
   let g:detectindent_preferred_expandtab=1
   let g:detectindent_preferred_indent=4
   autocmd BufReadPost * :DetectIndent
-end
+endif
 
 " ===========================
 " wildfire.vim
@@ -188,7 +193,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-if filereadable(expand("~/.vim/plugged/coc.nvim"))
+if !empty(glob('~/.vim/plugged/coc.nvim'))
   " Highlight the symbol and its references when holding the cursor.
   autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
@@ -197,7 +202,7 @@ if filereadable(expand("~/.vim/plugged/coc.nvim"))
   " NOTE: Please see `:h coc-status` for integrations with external plugins that
   " provide custom statusline: lightline.vim, vim-airline.
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-end
+endif
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
