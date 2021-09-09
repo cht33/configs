@@ -19,11 +19,16 @@ Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function ViExit
 # 设置 Ctrl+z 为撤销
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
-# 设置向上键为后向搜索历史记录
+# 设置向上键/<C-k>为后向搜索历史记录
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key "Ctrl+k" -Function HistorySearchBackward
 
-# 设置向下键为前向搜索历史纪录
+# 设置向下键/<C-j>为前向搜索历史纪录
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key "Ctrl+j" -Function HistorySearchForward
+
+# 设置<C-l>为接受当前补全提示
+Set-PSReadLineKeyHandler -Key "Ctrl+l" -Function AcceptSuggestion
 #-------------------------------  Set Hot-keys END    -------------------------------
 
 #-------------------------------   Set Alias Begin    -------------------------------
