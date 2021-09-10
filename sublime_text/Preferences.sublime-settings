@@ -1,0 +1,13 @@
+{
+    "theme": "Default Dark.sublime-theme",
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+    "font-face": "CaskaydiaCove NF",
+
+    "draw_white_space": "all",
+    "expand_tabs_on_save": true,
+    "translate_tabs_to_spaces": true,
+    "tab_size": 4,
+    "trim_trailing_white_space_on_save": true,
+
+    "default_line_ending": "unix",
+}
