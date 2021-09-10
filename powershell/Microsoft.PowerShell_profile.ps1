@@ -1,6 +1,8 @@
 #------------------------------- Import Modules BEGIN -------------------------------
 # 引入 ps-read-line
 Import-Module PSReadLine
+
+# Import-Module PSColor
 #------------------------------- Import Modules END   -------------------------------
 
 #-------------------------------  Set Hot-keys BEGIN  -------------------------------
@@ -27,29 +29,30 @@ Set-PSReadLineKeyHandler -Key "Ctrl+k" -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key "Ctrl+j" -Function HistorySearchForward
 
-# 设置<C-l>为接受当前补全提示
-Set-PSReadLineKeyHandler -Key "Ctrl+l" -Function AcceptSuggestion
+# 设置<C-f>为接受当前补全提示
+Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptSuggestion
+
+# 设置<C-l>为接受下一个补全提示词
+Set-PSReadLineKeyHandler -Key "Ctrl+l" AcceptNextSuggestionWord
+
+# 重定义Rightarrow，处于行尾时为接受下一个补全提示词
+Set-PSReadLineKeyHandler -Key RightArrow -ScriptBlock {
+       param($key, $arg)
+
+       $line = $null
+       $cursor = $null
+       [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+       if ($cursor -lt $line.Length) {
+           [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+       } else {
+           [Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
+       }
+}
+
 #-------------------------------  Set Hot-keys END    -------------------------------
 
 #-------------------------------   Set Alias Begin    -------------------------------
-# 3. 查看目录 ls & ll
-function ListFileNames($param='cht') {
-    $list = Get-ChildItem
-    foreach($t in $list) {
-        if ($param[0] -eq 'a') {
-            write-host ("{0}  {1,10:d} {1,5:t}  " -f $t.mode, $t.LastWriteTime) -NoNewline
-        }
-        if ($t.mode[0] -eq 'd') {
-            write-host $t.Name -ForegroundColor DarkBlue
-        } else {
-            write-host $t.Name
-        }
-    }
-}
-function ListAll {ListFileNames -param 'a'}
-Set-Alias -Name ls -Value ListFileNames
-Set-Alias -Name ll -Value ListAll
-
 # 4. 打开当前工作目录
 function OpenCurrentFolder {
     param
