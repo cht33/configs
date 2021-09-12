@@ -96,6 +96,8 @@ New-Alias -Name gb -Value Get-GitBranch -Force -Option AllScope
 #-------------------------------    Set Alias END     ------------------------------
 
 function prompt {
+    $computer = $env:COMPUTERNAME.ToLower()+" "
+    Write-Host $computer -NoNewline -ForegroundColor Yellow
     $drive = '~'
     if ($pwd.Path -ne $HOME) {
         $drive = "$(Split-Path -path $pwd -Leaf)"
