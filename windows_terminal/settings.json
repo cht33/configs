@@ -1,9 +1,9 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -15,25 +15,25 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command":
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "alt+w"
-        },
-        {
             "command": "paste",
             "keys": "ctrl+v"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": "alt+w"
         },
         {
             "command":
@@ -72,7 +72,7 @@
             "command":
             {
                 "action": "newTab",
-                "profile": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}"
+                "profile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}"
             }
         }
     ],
@@ -80,17 +80,21 @@
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "launchMode": "maximizedFocus",
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
-            "backgroundImage": "C:\\Users\\cht233\\Pictures\\1.jpg",
-            "backgroundImageOpacity": 0.040000000000000009,
+            "backgroundImageOpacity": 0.040000000000000008,
             "colorScheme": "Gruvbox Dark",
             "scrollbarState": "hidden",
-            "disableAnimations": true
+            "disableAnimations": true,
+
+            "fontFace": "CaskaydiaCove NF",
+            "fontSize": 12,
+            "padding": "5, 5, 0, 0",
+            "snapOnInput": true,
         },
-        "list":
+        "list": 
         [
             {
                 "commandline": "powershell.exe",
@@ -102,18 +106,15 @@
                 "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
-                "name": "cmd"
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
             },
             {
-                "fontFace": "CaskaydiaCove NF",
-                "fontSize": 11,
-                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+                "commandline": "C:\\Users\\cht\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe -NoLogo",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
-                "name": "Ubuntu-18.04",
-                "padding": "5, 5, 0, 0",
-                "snapOnInput": true,
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "."
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "backgroundImage": "C:\\Users\\cht\\Pictures\\madoka.jfif"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -122,21 +123,16 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "commandline": "C:/Program Files/PowerShell/7/pwsh.exe -nologo",
-                "fontFace": "CaskaydiaCove NF",
-                "fontSize": 11,
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
-                "historySize": 9001,
-                "name": "PowerShell",
-                "padding": "5, 5, 0, 0",
-                "snapOnInput": true,
-                "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "."
+                "name": "Ubuntu-20.04",
+                "source": "Windows.Terminal.Wsl",
+                "backgroundImage": "C:\\Users\\cht\\Pictures\\jojo_allstar.jpg",
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/cht-wsl",
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
@@ -206,52 +202,6 @@
             "selectionBackground": "#FFFFFF",
             "white": "#978771",
             "yellow": "#CC881A"
-        },
-        {
-            "background": "#283033",
-            "black": "#000000",
-            "blue": "#6666E9",
-            "brightBlack": "#666666",
-            "brightBlue": "#0000FF",
-            "brightCyan": "#00E5E5",
-            "brightGreen": "#00D900",
-            "brightPurple": "#E500E5",
-            "brightRed": "#E50000",
-            "brightWhite": "#E5E5E5",
-            "brightYellow": "#E5E500",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#00A6B2",
-            "foreground": "#00FF00",
-            "green": "#00A600",
-            "name": "Homebrew",
-            "purple": "#B200B2",
-            "red": "#FC5275",
-            "selectionBackground": "#FFFFFF",
-            "white": "#BFBFBF",
-            "yellow": "#999900"
-        },
-        {
-            "background": "#272822",
-            "black": "#272822",
-            "blue": "#01549E",
-            "brightBlack": "#7C7C7C",
-            "brightBlue": "#0383F5",
-            "brightCyan": "#58C2E5",
-            "brightGreen": "#8DD006",
-            "brightPurple": "#A87DB8",
-            "brightRed": "#F3044B",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#CCCC81",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#1A83A6",
-            "foreground": "#CACACA",
-            "green": "#74AA04",
-            "name": "Monokai",
-            "purple": "#89569C",
-            "red": "#A70334",
-            "selectionBackground": "#CCCC81",
-            "white": "#CACACA",
-            "yellow": "#B6B649"
         },
         {
             "background": "#282C34",
@@ -415,5 +365,7 @@
             "yellow": "#808000"
         }
     ],
-    "theme": "dark"
+    "startOnUserLogin": true,
+    "theme": "dark",
+    "windowingBehavior": "useAnyExisting"
 }
