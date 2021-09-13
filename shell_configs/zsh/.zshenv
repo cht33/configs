@@ -5,3 +5,6 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export ZSH="$ZDOTDIR/oh_my_zsh"
 export _Z_DATA="$ZDOTDIR/.z"
+
+export EDITOR="vim"
+export VISUAL="vim"
