@@ -3,7 +3,6 @@
 .config
 ├── aliases
 └── zsh
-    ├── .z
     ├── .zshrc
-    └── oh_my_zsh
+    └── oh_my_zsh/
 ```
