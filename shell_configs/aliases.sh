@@ -74,7 +74,8 @@ alias glo='git log --pretty="oneline"'
 # +------+
 # | tmux |
 # +------+
-alias tmuxk='tmux kill-session -t'
-alias tmuxa='tmux attach -t'
-alias tmuxl='tmux list-sessions'
+alias tmk='tmux kill-session -t'
+alias tma='tmux attach -t'
+alias tml='tmux list-sessions'
+alias tmn='tmux new -s'
 
