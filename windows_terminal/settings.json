@@ -15,6 +15,14 @@
             "keys": "ctrl+shift+f"
         },
         {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": "alt+w"
+        },
+        {
             "command": "paste",
             "keys": "ctrl+v"
         },
@@ -28,15 +36,7 @@
             "keys": "alt+shift+d"
         },
         {
-            "command":
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "alt+w"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "right"
@@ -44,7 +44,7 @@
             "keys": "alt+d"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "down"
@@ -52,7 +52,7 @@
             "keys": "alt+s"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "left"
@@ -68,12 +68,12 @@
             "keys": "ctrl+enter"
         },
         {
-            "name": "wsl",
-            "command":
+            "command": 
             {
                 "action": "newTab",
                 "profile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}"
-            }
+            },
+            "name": "wsl"
         }
     ],
     "copyFormatting": "none",
@@ -86,13 +86,15 @@
         {
             "backgroundImageOpacity": 0.040000000000000008,
             "colorScheme": "Gruvbox Dark",
-            "scrollbarState": "hidden",
-            "disableAnimations": true,
-
-            "fontFace": "CaskaydiaCove NF",
-            "fontSize": 12,
+            "font": 
+            {
+                "face": "CaskaydiaCove NF",
+                "size": 12
+            },
             "padding": "5, 5, 0, 0",
+            "scrollbarState": "hidden",
             "snapOnInput": true,
+            "bellStyle": "none"
         },
         "list": 
         [
@@ -109,12 +111,12 @@
                 "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
             },
             {
+                "backgroundImage": "C:\\Users\\cht\\Pictures\\madoka.jfif",
                 "commandline": "C:\\Users\\cht\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe -NoLogo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore",
-                "backgroundImage": "C:\\Users\\cht\\Pictures\\madoka.jfif"
+                "source": "Windows.Terminal.PowershellCore"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -123,12 +125,12 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "backgroundImage": "C:\\Users\\cht\\Pictures\\jojo_allstar.jpg",
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
                 "name": "Ubuntu-20.04",
                 "source": "Windows.Terminal.Wsl",
-                "backgroundImage": "C:\\Users\\cht\\Pictures\\jojo_allstar.jpg",
-                "startingDirectory": "//wsl$/Ubuntu-20.04/home/cht-wsl",
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/cht-wsl"
             }
         ]
     },
@@ -365,7 +367,7 @@
             "yellow": "#808000"
         }
     ],
-    "startOnUserLogin": true,
+    "startOnUserLogin": false,
     "theme": "dark",
     "windowingBehavior": "useAnyExisting"
 }
