@@ -1,0 +1,172 @@
+{
+    "editor.fontSize": 15,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "explorer.confirmDelete": false,
+
+    "go.useLanguageServer": true,
+    "workbench.colorTheme": "Monokai",
+    "verilog.linting.linter": "xvlog",
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+
+    "vim.useSystemClipboard": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.useCtrlKeys": false,
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<ESC>"]
+        },
+        {
+            "before": ["f", "j"],
+            "after": ["<C-o>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before":["leader", "n"],
+            "commands": [
+                ":nohl",
+            ]
+        },
+        {
+            "before": ["leader", "w"],
+            "commands": [
+                "workbench.action.files.save",
+            ]
+        },
+        {
+            "before": ["J"],
+            "after": ["5", "j"]
+        },
+        {
+            "before": ["K"],
+            "after": ["5", "k"]
+        },
+        {
+            "before": ["U"],
+            "after": ["J"]
+        }
+    ],
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.workspaceFolder": "C:\\Users\\cht233\\.leetcode",
+    "leetcode.defaultLanguage": "rust",
+
+    // to fix the filewatcher bug in wsl with rust complier
+    "files.watcherExclude": {
+        "**/target/**": true
+    },
+
+    // to fix the bug that rls cannot work well with no_std
+    "rust.all_targets": false,
+    "[rust]": {},
+
+    "latex-workshop.latex.tools": [
+        {
+            // 编译工具和命令
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ],
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xe->bib->xe->xe",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdf->bib->pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "D:/software/sumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "-reuse-instance",
+        "-inverse-search",
+        "\"D:/software/Microsoft VS Code/Code.exe\" \"D:/software/Microsoft VS Code/resources/app/out/cli.js\" -gr \"%f\":\"%l\"",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "D:/software/sumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "-reuse-instance",
+        "-inverse-search",
+        "\"D:/software/Microsoft VS Code/Code.exe\" \"D:/software/Microsoft VS Code/resources/app/out/cli.js\" -gr \"%f\":\"%l\"",
+        "%PDF%",
+    ],
+
+    "code-runner.runInTerminal": true,
+    "terminal.integrated.fontFamily": "Cascadia Code PL",
+    "editor.fontFamily": "Cascadia Code PL, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "remote.SSH.remotePlatform": {
+        "cht": "linux",
+        "192.168.56.29": "linux",
+        "127.0.0.1": "linux"
+    },
+    "window.zoomLevel": -1,
+    "workbench.preferredDarkColorTheme": "Monokai",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "files.eol": "\n"
+
+
+}
