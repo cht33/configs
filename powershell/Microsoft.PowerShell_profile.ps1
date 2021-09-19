@@ -96,6 +96,11 @@ New-Alias -Name gb -Value Get-GitBranch -Force -Option AllScope
 #-------------------------------    Set Alias END     ------------------------------
 
 function prompt {
+    $venvname = $Env:CONDA_PROMPT_MODIFIER
+    if ($venvname) {
+        Write-Host $venvname -NoNewline -ForegroundColor DarkBlue
+    }
+
     $computer = $env:COMPUTERNAME.ToLower()+" "
     Write-Host $computer -NoNewline -ForegroundColor Yellow
     $drive = '~'
