@@ -4,17 +4,17 @@
 
 call plug#begin('~/.vim/plugged')
 
-" color schemes
+" " color schemes
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
-" augument
+" " augument
 Plug 'ciaranm/detectindent'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 
-" edit
+" " edit
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'gcmt/wildfire.vim'
@@ -54,6 +54,8 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2 
 let g:indentLine_color_term = 102
 let g:indentLine_color_gui = '#808A87' " grey
+" https://github.com/Yggdroot/indentLine/issues/78
+let g:indentLine_fileTypeExclude = ['tex', 'markdown']
 
 " ===========================
 " nerdcommenter
