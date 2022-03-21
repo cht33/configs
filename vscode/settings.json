@@ -1,68 +1,102 @@
 {
-    "editor.fontSize": 15,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-    "explorer.confirmDelete": false,
-
-    "go.useLanguageServer": true,
-    "workbench.colorTheme": "Monokai",
-    "verilog.linting.linter": "xvlog",
-    "files.trimTrailingWhitespace": true,
-    "editor.renderWhitespace": "all",
-
     "vim.useSystemClipboard": true,
     "vim.incsearch": true,
     "vim.hlsearch": true,
     "vim.useCtrlKeys": false,
+    "vim.handleKeys": {
+        "<C-v>": true,
+        "<C-o>": true,
+        "<C-i>": true,
+    },
     "vim.leader": "<space>",
+    "vim.timeout": 300,
+    "vim.foldfix": true,
     "vim.insertModeKeyBindings": [
         {
-            "before": ["j", "j"],
-            "after": ["<ESC>"]
+            "before": [ "j", "j" ],
+            "after": [ "<ESC>" ]
         },
         {
-            "before": ["f", "j"],
-            "after": ["<C-o>"]
+            "before": [ "f", "j" ],
+            "after": [ "<C-o>" ]
+        },
+        {
+            "before": [ "f", "j" ],
+            "after": [ "<Esc>", "/", "<", "+", "+", ">", "enter", "c", "4", "l" ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "J" ],
+            "after": [ "5", "j" ]
+        },
+        {
+            "before": [ "K" ],
+            "after": [ "5", "k" ]
         },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before":["leader", "n"],
-            "commands": [
-                ":nohl",
-            ]
+            "before": [ "leader", "enter" ],
+            "commands": [ ":nohl", ]
         },
         {
-            "before": ["leader", "w"],
-            "commands": [
-                "workbench.action.files.save",
-            ]
+            "before": [ "leader", "w" ],
+            "commands": [ "workbench.action.files.save", ]
         },
         {
-            "before": ["J"],
-            "after": ["5", "j"]
+            "before": [ "J" ],
+            "after": [ "5", "j" ]
         },
         {
-            "before": ["K"],
-            "after": ["5", "k"]
+            "before": [ "K" ],
+            "after": [ "5", "k" ]
         },
         {
-            "before": ["U"],
-            "after": ["J"]
-        }
+            "before": [ "U" ],
+            "after": [ "J" ]
+        },
+        {
+            "before": [ "Q" ],
+            "after": [ ":", "q", "enter" ]
+        },
+        {
+            "before": [ "leader", "w", "l" ],
+            "commands": [ "workbench.action.splitEditorRight" ]
+        },
+        {
+            "before": [ "leader", "w", "h" ],
+            "commands": [ "workbench.action.splitEditorLeft" ]
+        },
+        {
+            "before": [ "leader", "w", "j" ],
+            "commands": [ "workbench.action.splitEditorDown" ]
+        },
+        {
+            "before": [ "leader", "w", "k" ],
+            "commands": [ "workbench.action.splitEditorUp" ]
+        },
+        {
+            "before": [ "leader", "l" ],
+            "commands": [ "workbench.action.focusRightGroup" ]
+        },
+        {
+            "before": [ "leader", "h" ],
+            "commands": [ "workbench.action.focusLeftGroup" ]
+        },
+        {
+            "before": [ "leader", "j" ],
+            "commands": [ "workbench.action.focusDownGroup" ]
+        },
+        {
+            "before": [ "leader", "k" ],
+            "commands": [ "workbench.action.focusUpGroup" ]
+        },
+        {
+            "before": [ "<leader>", "f" ],
+            "commands": [ "revealInExplorer" ],
+        },
     ],
-    "leetcode.endpoint": "leetcode-cn",
-    "leetcode.workspaceFolder": "C:\\Users\\cht233\\.leetcode",
-    "leetcode.defaultLanguage": "rust",
-
-    // to fix the filewatcher bug in wsl with rust complier
-    "files.watcherExclude": {
-        "**/target/**": true
-    },
-
-    // to fix the bug that rls cannot work well with no_std
-    "rust.all_targets": false,
-    "[rust]": {},
-
     "latex-workshop.latex.tools": [
         {
             // 编译工具和命令
@@ -97,76 +131,206 @@
     "latex-workshop.latex.recipes": [
         {
             "name": "xelatex",
-            "tools": [
-                "xelatex"
-            ],
+            "tools": [ "xelatex" ],
         },
         {
             "name": "pdflatex",
-            "tools": [
-                "pdflatex"
-            ]
+            "tools": [ "pdflatex" ]
         },
         {
             "name": "xe->bib->xe->xe",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
+            "tools": [ "xelatex", "bibtex", "xelatex", "xelatex" ]
         },
         {
             "name": "pdf->bib->pdf->pdf",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
+            "tools": [ "pdflatex", "bibtex", "pdflatex", "pdflatex" ]
+        }
+    ],
+    "latex-workshop.hover.preview.enabled": true,
+    "latex-workshop.hover.preview.scale": 1,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.mathpreviewpanel.editorGroup": "below",
+    // markdown all in one
+    "markdown.math.enabled": false,
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        },
+        "files.trimTrailingWhitespace": false
+    },
+    // vsc conceal
+    "conceal.revealOn": "active-line",
+    "conceal.substitutions": [
+        {
+            "language": "latex",
+            "substitutions": [
+                { "ugly": "\\$", "pretty": "\null" },
+                // { "ugly": "\\\\\\[", "pretty": "\null" },
+                // { "ugly": "\\\\]", "pretty": "\null" },
+                { "ugly": "\\\\left", "pretty": "\null" },
+                { "ugly": "\\\\right", "pretty": "\null" },
+                { "ugly": "\\\\langle", "pretty": "<" },
+                { "ugly": "\\\\rangle", "pretty": ">" },
+                { "ugly": "\\\\(?:lVert|rVert|vert)", "pretty": "|" },
+
+                // 隐藏math字体及其花括号
+                { "ugly": "\\\\math(?:rm|bb|bf|cal){", "pretty": "\null" },
+                { "ugly": "(?<=\\\\math(?:rm|bb|bf|cal){[^{}]*?)}", "pretty": "\null" },
+                // 隐藏\bm
+                { "ugly": "\\\\bm{", "pretty": "\null" },
+                { "ugly": "(?<=\\\\bm{[^{}]*?)}", "pretty": "\null" },
+
+                // 隐藏上下标及sqrt中单字符左右的花括号
+                { "ugly": "(?<=(?:[_^]|\\\\sqrt)){(?=(?:\\w|\\\\[A-Za-z]+?)})", "pretty": "\null" },
+                { "ugly": "(?<=(?:[_^]|\\\\sqrt){(?:\\w|\\\\[A-Za-z]+?))}", "pretty": " " },
+
+                { "ugly": "\\\\limits", "pretty": "\null" },
+                { "ugly": "(?:\\\\frac{)(?=[^{}]+})", "pretty": "(" },
+                { "ugly": "(?<=\\\\frac{[^{}]+)}", "pretty": ")/" },
+                { "ugly": "(?<=\\\\frac{[^{}]+}){(?=[^{}]+})", "pretty": "(" },
+                { "ugly": "(?<=\\\\frac{[^{}]+}{[^{}]+)}", "pretty": ")" },
+                { "ugly": "\\\\sqrt", "pretty": "√" },
+                { "ugly": "\\\\partial", "pretty": "∂" },
+                { "ugly": "\\\\leq", "pretty": "≤", "post": "\\b|_" },
+                { "ugly": "\\\\leqslant", "pretty": "≤", "post": "\\b|_" },
+                { "ugly": "\\\\geq", "pretty": "≥", "post": "\\b|_" },
+                { "ugly": "\\\\geqslant", "pretty": "≥", "post": "\\b|_" },
+                { "ugly": "\\\\cdots", "pretty": "⋯", "post": "\\b|_" },
+                { "ugly": "\\\\vdots", "pretty": "⋮", "post": "\\b|_" },
+                { "ugly": "\\\\ldots", "pretty": "…", "post": "\\b|_" },
+                { "ugly": "\\\\ldots", "pretty": "…", "post": "\\b|_" },
+                { "ugly": "\\\\top", "pretty": "⊤", "post": "\\b|_" },
+                { "ugly": "\\\\b|_ot", "pretty": "⊥", "post": "\\b|_" },
+                { "ugly": "\\\\topbot", "pretty": "⌶", "post": "\\b|_" },
+                { "ugly": "\\\\wedge", "pretty": "∧", "post": "\\b|_" },
+                { "ugly": "\\\\vee", "pretty": "∨", "post": "\\b|_" },
+                { "ugly": "\\\\cup", "pretty": "∪", "post": "\\b|_" },
+                { "ugly": "\\\\bigcup", "pretty": "∪", "post": "\\b|_" },
+                { "ugly": "\\\\cap", "pretty": "∩", "post": "\\b|_" },
+                { "ugly": "\\\\bigcap", "pretty": "∩", "post": "\\b|_" },
+                { "ugly": "\\\\otimes", "pretty": "⊗", "post": "\\b|_" },
+                { "ugly": "\\\\neg", "pretty": "¬", "post": "\\b|_" },
+                { "ugly": "\\\\forall", "pretty": "∀", "post": "\\b|_" },
+                { "ugly": "\\\\exists", "pretty": "∃", "post": "\\b|_" },
+                { "ugly": "\\\\nexists", "pretty": "∄", "post": "\\b|_" },
+                { "ugly": "\\\\b|_ecause", "pretty": "∵", "post": "\\b|_" },
+                { "ugly": "\\\\therefore", "pretty": "∴", "post": "\\b|_" },
+                { "ugly": "\\\\neq", "pretty": "≠", "post": "\\b|_" },
+                { "ugly": "\\\\equiv", "pretty": "≡", "post": "\\b|_" },
+                { "ugly": "\\\\mapsto", "pretty": "↦", "post": "\\b|_" },
+                { "ugly": "\\\\mapsfrom", "pretty": "↤", "post": "\\b|_" },
+                { "ugly": "\\\\Mapsto", "pretty": "⤇", "post": "\\b|_" },
+                { "ugly": "\\\\Mapsfrom", "pretty": "⤆", "post": "\\b|_" },
+                { "ugly": "\\\\longmapsto", "pretty": "⟼", "post": "\\b|_" },
+                { "ugly": "\\\\mapsfrom", "pretty": "⟻", "post": "\\b|_" },
+                { "ugly": "\\\\Longmapsto", "pretty": "⟾", "post": "\\b|_" },
+                { "ugly": "\\\\Longmapsfrom", "pretty": "⟽", "post": "\\b|_" },
+                { "ugly": "\\\\leftarrow", "pretty": "←", "post": "\\b|_" },
+                { "ugly": "\\\\rightarrow", "pretty": "→", "post": "\\b|_" },
+                { "ugly": "\\\\to", "pretty": "→", "post": "\\b|_" },
+                { "ugly": "\\\\leftrightarrow", "pretty": "↔", "post": "\\b|_" },
+                { "ugly": "\\\\Leftarrow", "pretty": "⇐", "post": "\\b|_" },
+                { "ugly": "\\\\Rightarrow", "pretty": "⇒", "post": "\\b|_" },
+                { "ugly": "\\\\Leftrightarrow", "pretty": "⇔", "post": "\\b|_" },
+                { "ugly": "\\\\longleftarrow", "pretty": "⟵", "post": "\\b|_" },
+                { "ugly": "\\\\longrightarrow", "pretty": "⟶", "post": "\\b|_" },
+                { "ugly": "\\\\longleftrightarrow", "pretty": "⟷", "post": "\\b|_" },
+                { "ugly": "\\\\Longrightarrow", "pretty": "⟹", "post": "\\b|_" },
+                { "ugly": "\\\\implies", "pretty": "⟹", "post": "\\b|_" },
+                { "ugly": "\\\\Longleftarrow", "pretty": "⟸", "post": "\\b|_" },
+                { "ugly": "\\\\impliedby", "pretty": "⟸", "post": "\\b|_" },
+                { "ugly": "\\\\Longleftrightarrow", "pretty": "⟺", "post": "\\b|_" },
+                { "ugly": "\\\\iff", "pretty": "⟺", "post": "\\b|_" },
+                { "ugly": "\\\\in", "pretty": "∈", "post": "\\b|_" },
+                { "ugly": "\\\\notin", "pretty": "∉", "post": "\\b|_" },
+                { "ugly": "\\\\pm", "pretty": "±", "post": "\\b|_" },
+                { "ugly": "\\\\times", "pretty": "×", "post": "\\b|_" },
+                { "ugly": "\\\\infty", "pretty": "∞", "post": "\\b|_" },
+                { "ugly": "\\\\sum", "pretty": "∑", "post": "\\b|_" },
+                { "ugly": "\\\\prod", "pretty": "∏", "post": "\\b|_" },
+                { "ugly": "\\\\int", "pretty": "∫", "post": "\\b|_" },
+                { "ugly": "\\\\iint", "pretty": "∬", "post": "\\b|_" },
+                { "ugly": "\\\\iiint", "pretty": "∭", "post": "\\b|_" },
+                { "ugly": "\\\\oint", "pretty": "∮", "post": "\\b|_" },
+                { "ugly": "\\\\oiint", "pretty": "∯", "post": "\\b|_" },
+                { "ugly": "\\\\oiiint", "pretty": "∰", "post": "\\b|_" },
+                { "ugly": "\\\\Gamma", "pretty": "Γ", "post": "\\b|_" },
+                { "ugly": "\\\\Delta", "pretty": "Δ", "post": "\\b|_" },
+                { "ugly": "\\\\Theta", "pretty": "Θ", "post": "\\b|_" },
+                { "ugly": "\\\\Lambda", "pretty": "Λ", "post": "\\b|_" },
+                { "ugly": "\\\\Xi", "pretty": "Ξ", "post": "\\b|_" },
+                { "ugly": "\\\\Pi", "pretty": "Π", "post": "\\b|_" },
+                { "ugly": "\\\\Sigma", "pretty": "Σ", "post": "\\b|_" },
+                { "ugly": "\\\\Upsilon", "pretty": "Υ", "post": "\\b|_" },
+                { "ugly": "\\\\Phi", "pretty": "Φ", "post": "\\b|_" },
+                { "ugly": "\\\\Psi", "pretty": "Ψ", "post": "\\b|_" },
+                { "ugly": "\\\\Omega", "pretty": "Ω", "post": "\\b|_" },
+                { "ugly": "\\\\alpha", "pretty": "α", "post": "\\b|_" },
+                { "ugly": "\\\\beta", "pretty": "β", "post": "\\b|_" },
+                { "ugly": "\\\\gamma", "pretty": "γ", "post": "\\b|_" },
+                { "ugly": "\\\\delta", "pretty": "δ", "post": "\\b|_" },
+                { "ugly": "\\\\epsilon", "pretty": "ε", "post": "\\b|_" },
+                { "ugly": "\\\\zeta", "pretty": "ζ", "post": "\\b|_" },
+                { "ugly": "\\\\eta", "pretty": "η", "post": "\\b|_" },
+                { "ugly": "\\\\theta", "pretty": "θ", "post": "\\b|_" },
+                { "ugly": "\\\\iota", "pretty": "ι", "post": "\\b|_" },
+                { "ugly": "\\\\kappa", "pretty": "κ", "post": "\\b|_" },
+                { "ugly": "\\\\lambda", "pretty": "λ", "post": "\\b|_" },
+                { "ugly": "\\\\mu", "pretty": "μ", "post": "\\b|_" },
+                { "ugly": "\\\\nu", "pretty": "ν", "post": "\\b|_" },
+                { "ugly": "\\\\xi", "pretty": "ξ", "post": "\\b|_" },
+                { "ugly": "\\\\pi", "pretty": "π", "post": "\\b|_" },
+                { "ugly": "\\\\rho", "pretty": "ρ", "post": "\\b|_" },
+                { "ugly": "\\\\varsigma", "pretty": "ς", "post": "\\b|_" },
+                { "ugly": "\\\\sigma", "pretty": "σ", "post": "\\b|_" },
+                { "ugly": "\\\\tau", "pretty": "τ", "post": "\\b|_" },
+                { "ugly": "\\\\upsilon", "pretty": "υ", "post": "\\b|_" },
+                { "ugly": "\\\\phi", "pretty": "φ", "post": "\\b|_" },
+                { "ugly": "\\\\chi", "pretty": "χ", "post": "\\b|_" },
+                { "ugly": "\\\\psi", "pretty": "ψ", "post": "\\b|_" },
+                { "ugly": "\\\\omega", "pretty": "ω", "post": "\\b|_" },
             ]
         }
     ],
-    "latex-workshop.view.pdf.viewer": "external",
-    "latex-workshop.view.pdf.external.viewer.command": "D:/software/sumatraPDF/SumatraPDF.exe",
-    "latex-workshop.view.pdf.external.viewer.args": [
-        "-forward-search",
-        "%TEX%",
-        "%LINE%",
-        "-reuse-instance",
-        "-inverse-search",
-        "\"D:/software/Microsoft VS Code/Code.exe\" \"D:/software/Microsoft VS Code/resources/app/out/cli.js\" -gr \"%f\":\"%l\"",
-        "%PDF%"
-    ],
-    "latex-workshop.view.pdf.external.synctex.command": "D:/software/sumatraPDF/SumatraPDF.exe",
-    "latex-workshop.view.pdf.external.synctex.args": [
-        "-forward-search",
-        "%TEX%",
-        "%LINE%",
-        "-reuse-instance",
-        "-inverse-search",
-        "\"D:/software/Microsoft VS Code/Code.exe\" \"D:/software/Microsoft VS Code/resources/app/out/cli.js\" -gr \"%f\":\"%l\"",
-        "%PDF%",
-    ],
-
-    "code-runner.runInTerminal": true,
-    "terminal.integrated.fontFamily": "Cascadia Code PL",
-    "editor.fontFamily": "Cascadia Code PL, Consolas, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "remote.SSH.remotePlatform": {
-        "cht": "linux",
-        "192.168.56.29": "linux",
-        "127.0.0.1": "linux"
-    },
-    "window.zoomLevel": -1,
-    "workbench.preferredDarkColorTheme": "Monokai",
+    // vscode native
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.wordWrap": "off",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.pdf": "latex-workshop-pdf-hook"
     },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
+    "editor.detectIndentation": false,
+    "editor.fontSize": 16,
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+    "editor.fontFamily": "'Sarasa Mono SC Nerd Regular', 'Cascadia Code PL', Consolas, 'Courier New', monospace",
+    // "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.rulers": [80, 120],
+    "files.eol": "\n",
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.terminal.focusFind",
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#ff00ff41"
     },
-    "files.eol": "\n"
-
-
+    "files.autoGuessEncoding": true,
+    "editor.lineNumbers": "relative",
+    "explorer.confirmDelete": false,
+    "terminal.external.windowsExec": "C:\\Users\\cht\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
+    "window.zoomLevel": -1,
+    "remote.SSH.remotePlatform": {
+        "192.168.56.26": "linux",
+        "cht_faster": "linux"
+    },
+    "workbench.activityBar.visible": false,
 }
