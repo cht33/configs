@@ -21,10 +21,6 @@ Plug 'gcmt/wildfire.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-" make and run
-" Plug 'skywind3000/asynctasks.vim'
-" Plug 'skywind3000/asyncrun.vim'
-
 " magic
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -80,18 +76,6 @@ if !empty(glob('~/.vim/plugged/vim-visual-multi'))
   nmap <C-k> <C-N>
   vmap <C-k> <C-N>
 endif
-
-" ===========================
-" asyncrun and asynctasks
-" ===========================
-" let g:asynctasks_config_name = '.asynctask'
-" let g:asynctasks_rtp_config = 'asynctasks.ini'
-" let g:asyncrun_open=6
-" let g:asynctasks_term_pos='bottom'
-" let g:asynctasks_term_rows=10
-" let g:asynctasks_term_cols=80
-" noremap <silent><f5> :AsyncTask oi-cpp-run<cr>
-" noremap <silent><f9> :AsyncTask file-build<cr>
 
 " ===========================
 " gruvbox
