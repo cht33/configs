@@ -12,7 +12,7 @@
 cd ~
 cp configs/shell_configs/zsh/.zshenv ~
 zsh
-mkdir $CHT_CONFIG_HOME/zsh
+mkdir -p $CHT_CONFIG_HOME/zsh
 cp configs/shell_configs/zsh/.zshrc $CHT_CONFIG_HOME/zsh/
 cp configs/shell_configs/aliases.sh $CHT_CONFIG_HOME
 bash configs/shell_configs/zsh/omz_install.sh
