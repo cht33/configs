@@ -14,3 +14,5 @@ mkdir ~/.vim
 cp -r ./* ~/.vim/
 cp .vimrc ~/
 ```
+
+注意 `coc.nvim` 所需的 `node` 最低版本
